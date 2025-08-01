@@ -1,13 +1,17 @@
 const express = require('express')
 const app = express();
+require('dotenv').config();
+const cors = require('cors');
+app.use(cors());
 
 // These are url and key to fetch the openweather data....
- const apiKey = "8ad4d967676a70027224822fcc0c33a0";
+ const apiKey =  process.env.OPENWEATHER_API_KEY;
  const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 // Here we fetch the data...
  async function fetchWeather(city){
-    const response = await fetch(apiUrl + city + `&appid=${apiKey}`)
+    // const response = await fetch(apiUrl + city + `&appid=${apiKey}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
     return await response.json();  // Return the response to data (line no - 18)
  }
 
