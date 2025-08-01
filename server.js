@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express();
 require('dotenv').config();
-const cors = require('cors');
-app.use(cors());
+
 
 // These are url and key to fetch the openweather data....
  const apiKey =  process.env.OPENWEATHER_API_KEY;
